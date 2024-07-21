@@ -80,32 +80,6 @@ function getResult(playerChoice, compChoice) {
     }   return result;
 }
 
-function playRound() {
-    let player = getPlayerChoice();
-    let computer = getCompChoice();
-    let results = getResult(player, computer);
-
-    if (results === 'Draw') {
-        if (confirm(`Draw! Opponent picked ${computer}. Try again?`) === true) {
-            return 'Draw';
-        } else {
-            alert("Thanks for playing! Refresh page to try again.");
-        }
-    } else if (results === 'Win') {
-        if (confirm(`You win! Opponent picked ${computer}. Try again?`) === true) {
-            return 'Win';
-        } else {
-            alert("Thanks for playing! Refresh page to try again.");
-        }
-    } else if (results === 'Loss') {
-        if (confirm(`You lost! Opponent picked ${computer}. Try again?`) === true) {
-            return 'Loss';
-        } else {
-            alert("Thanks for playing! Refresh page to try again.");
-        }
-    }
-}
-
 function bestOf() {
     let games = Number(prompt("Lets play Rock Paper Scissors! \nHow many games would you like to play? (1-9)"));
     let result, player, computer;
@@ -142,71 +116,3 @@ function bestOf() {
 }
 
 bestOf();
-
-// function rps(playerChoice, compChoice) {
-//     if (playerChoice === 'Rock'){
-//         if (compChoice === 'Rock') {
-//             if (confirm(`Draw! Opponent picked ${compChoice}. Try again?`) === true) {
-//                 rps(getPlayerChoice(), getCompChoice());
-//             } else {
-//                 alert("Thanks for playing! Refresh page to try again.");
-//             }
-//         } else if (compChoice === 'Paper') {
-//             if (confirm(`You lost! Opponent picked ${compChoice}. Try again?`) === true) {
-//                 rps(getPlayerChoice(), getCompChoice());
-//             } else {
-//                 alert("Thanks for playing! Refresh page to try again.");
-//             } 
-//         } else if (compChoice === 'Scissors') {
-//             if (confirm(`You won! Opponent picked ${compChoice}. Try again?`) === true) {
-//                 rps(getPlayerChoice(), getCompChoice());
-//             } else {
-//                 alert("Thanks for playing! Refresh page to try again.");
-//             }
-//         } 
-//     } else if (playerChoice === 'Paper') {
-//         if (compChoice === 'Rock') {
-//             if (confirm(`You won! Opponent picked ${compChoice}. Try again?`) === true) {
-//                 rps(getPlayerChoice(), getCompChoice());
-//             } else {
-//                 alert("Thanks for playing! Refresh page to try again.");
-//             }
-//         } else if (compChoice === 'Paper') {
-//             if (confirm(`Draw! Opponent picked ${compChoice}. Try again?`) === true) {
-//                 rps(getPlayerChoice(), getCompChoice());
-//             } else {
-//                 alert("Thanks for playing! Refresh page to try again.");
-//             }
-//         } else if (compChoice === 'Scissors') {
-//             if (confirm(`You lost! Opponent picked ${compChoice}. Try again?`) === true) {
-//                 rps(getPlayerChoice(), getCompChoice());
-//             } else {
-//                 alert("Thanks for playing! Refresh page to try again.");
-//             }
-//         }
-//     } else if (playerChoice === 'Scissors') {
-//         if (compChoice === 'Rock') {
-//             if (confirm(`You lost! Opponent picked ${compChoice}. Try again?`) === true) {
-//                 rps(getPlayerChoice(), getCompChoice());
-//             } else {
-//                 alert("Thanks for playing! Refresh page to try again.");
-//             }
-//         } else if (compChoice === 'Paper') {
-//             if (confirm(`You won! Opponent picked ${compChoice}. Try again?`) === true) {
-//                 rps(getPlayerChoice(), getCompChoice());
-//             } else {
-//                 alert("Thanks for playing! Refresh page to try again.");
-//             } 
-//         } else if (compChoice === 'Scissors') {
-//             if (confirm(`Draw! Opponent picked ${compChoice}. Try again?`) === true) {
-//                 rps(getPlayerChoice(), getCompChoice());
-//             } else {
-//                 alert("Thanks for playing! Refresh page to try again.");
-//             }
-//         }
-//     } else {
-//         alert(`Error!`);
-//     }
-// }
-
-// rps(getPlayerChoice(), getCompChoice())
