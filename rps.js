@@ -8,6 +8,7 @@
 // 2. Get Human choice
     // 2a. Numbers? vs Choices?
     // Pros: Numbers are faster ; Cons: May be confusing initially
+    // 2b. Check if choice is valid
 // 3. Generate text: 'Rock... Paper... Scissors!'
 // 4. Show CPU choice
 // 5. If
@@ -29,4 +30,23 @@ function getCompChoice() {
         choice = 'Scissors';
     }
     return choice
+}
+
+function getPlayerChoice() {
+    
+    let num = Number(prompt("Enter a choice (1 = Rock, 2 = Paper, 3 = Scissors)"));
+    let choice;
+    
+    while (num != 1 && num != 2 && num != 3) {
+        num = Number(prompt("Please enter a valid number! (1 = Rock, 2 = Paper, 3 = Scissors)"));
+    }
+
+        if (num === 1) {
+            choice = 'Rock';
+        } else if (num === 2) {
+            choice = 'Paper';
+        } else if (num === 3) {
+            choice = 'Scissors';
+        }
+        return choice;
 }
