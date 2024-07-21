@@ -95,6 +95,8 @@ function bestOf() {
         computer = getCompChoice();
         result = playRound(player, computer);
 
+        alert(`Round ${i}`);
+
         if (result === 'Win') {
             playerScore++;
             alert(`You win! ${player} (You) beats ${computer} (Computer). Current score is \nPlayer:${playerScore}     Computer:${computerScore}`);
