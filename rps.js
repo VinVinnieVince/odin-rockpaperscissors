@@ -97,10 +97,10 @@ function bestOf() {
 
         if (result === 'Win') {
             playerScore++;
-            alert(`You win! Computer picked ${computer}. Current score is \nPlayer:${playerScore}     Computer:${computerScore}`);
+            alert(`You win! ${player} (You) beats ${computer} (Computer). Current score is \nPlayer:${playerScore}     Computer:${computerScore}`);
         } else if (result === 'Loss') {
             computerScore++;
-            alert(`You lost! Computer picked ${computer}. Current score is \nPlayer:${playerScore}     Computer:${computerScore}`);
+            alert(`You lost! ${computer} (Computer) beats ${player} (You). Current score is \nPlayer:${playerScore}     Computer:${computerScore}`);
         } else if (result === 'Draw') {
             alert(`Draw - no score change! Computer picked ${computer}. Current score is \nPlayer:${playerScore}     Computer:${computerScore}`);
         }
