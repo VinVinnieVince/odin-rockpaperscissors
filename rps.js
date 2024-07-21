@@ -15,7 +15,9 @@
     // a. Same choice = Show 'draw!'
     // b. Inferior choice = Show 'CPU wins!'
     // c. Superior chocie = Show 'you win!'
-// 6. Repeat 2-5 unless cancelled
+// 6. Store variable for player and CPU scores
+// 7. Increment if either side wins a game
+// 8. Best of 5
 
 function getCompChoice() {
     
@@ -78,7 +80,7 @@ function getResult(playerChoice, compChoice) {
     }   return result;
 }
 
-function rps() {
+function playRound() {
     let player = getPlayerChoice();
     let computer = getCompChoice();
     let results = getResult(player, computer);
@@ -104,7 +106,7 @@ function rps() {
     }
 }
 
-rps();
+playRound();
 
 // function rps(playerChoice, compChoice) {
 //     if (playerChoice === 'Rock'){
