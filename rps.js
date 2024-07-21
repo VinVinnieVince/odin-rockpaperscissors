@@ -91,11 +91,11 @@ function bestOf() {
     }
     
     for (let i = 0; i < games; i++) {
+        alert(`Round ${i + 1}`);
+
         player = getPlayerChoice();
         computer = getCompChoice();
         result = playRound(player, computer);
-
-        alert(`Round ${i}`);
 
         if (result === 'Win') {
             playerScore++;
