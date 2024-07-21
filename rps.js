@@ -87,26 +87,61 @@ function playRound() {
 
     if (results === 'Draw') {
         if (confirm(`Draw! Opponent picked ${computer}. Try again?`) === true) {
-            rps();
+            return 'Draw';
         } else {
             alert("Thanks for playing! Refresh page to try again.");
         }
     } else if (results === 'Win') {
         if (confirm(`You win! Opponent picked ${computer}. Try again?`) === true) {
-            rps();
+            return 'Win';
         } else {
             alert("Thanks for playing! Refresh page to try again.");
         }
     } else if (results === 'Loss') {
         if (confirm(`You lost! Opponent picked ${computer}. Try again?`) === true) {
-            rps();
+            return 'Loss';
         } else {
             alert("Thanks for playing! Refresh page to try again.");
         }
     }
 }
 
-playRound();
+function bestOf() {
+    let games = Number(prompt("Lets play Rock Paper Scissors! \nHow many games would you like to play? (1-9)"));
+    let result, player, computer;
+    let playerScore = 0;
+    let computerScore = 0;
+
+    while (games < 0 || games > 9 || (!(Number.isInteger(games)))) {
+        games = Number(prompt("Please enter a number between 1-9!"));
+    }
+    
+    for (let i = 0; i < games; i++) {
+        player = getPlayerChoice();
+        computer = getCompChoice();
+        result = getResult(player, computer);
+
+        if (result === 'Win') {
+            playerScore++;
+            alert(`You win! Computer picked ${computer}. Current score is \nPlayer:${playerScore}     Computer:${computerScore}`);
+        } else if (result === 'Loss') {
+            computerScore++;
+            alert(`You lost! Computer picked ${computer}. Current score is \nPlayer:${playerScore}     Computer:${computerScore}`);
+        } else if (result === 'Draw') {
+            alert(`Draw - no score change! Computer picked ${computer}. Current score is \nPlayer:${playerScore}     Computer:${computerScore}`);
+        }
+    }
+
+    if (playerScore > computerScore) {
+        alert('Congrats! You win!');
+    } else if (playerScore < computerScore) {
+        alert('Better luck next time!');
+    } else if (playerScore === computerScore) {
+        alert('Draw! So close!');
+    }
+}
+
+bestOf();
 
 // function rps(playerChoice, compChoice) {
 //     if (playerChoice === 'Rock'){
