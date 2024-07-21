@@ -74,10 +74,8 @@ function getResult(playerChoice, compChoice) {
             result = 'Loss';
         } else if (compChoice === 'Paper') {
             result = 'Win';
-        } else if (compChoice === 'Scissors') {
-            result = 'Draw';
-        }
-    } return result;
+        } 
+    }   return result;
 }
 
 function rps() {
