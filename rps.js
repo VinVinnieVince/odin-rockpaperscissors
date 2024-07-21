@@ -50,3 +50,71 @@ function getPlayerChoice() {
         }
         return choice;
 }
+
+function rps(playerChoice, compChoice) {
+    if (playerChoice === 'Rock'){
+        if (compChoice === 'Rock') {
+            if (confirm(`Draw! Opponent picked ${compChoice}. Try again?`) === true) {
+                rps(getPlayerChoice(), getCompChoice());
+            } else {
+                alert("Thanks for playing! Refresh page to try again.");
+            }
+        } else if (compChoice === 'Paper') {
+            if (confirm(`You lost! Opponent picked ${compChoice}. Try again?`) === true) {
+                rps(getPlayerChoice(), getCompChoice());
+            } else {
+                alert("Thanks for playing! Refresh page to try again.");
+            } 
+        } else if (compChoice === 'Scissors') {
+            if (confirm(`You won! Opponent picked ${compChoice}. Try again?`) === true) {
+                rps(getPlayerChoice(), getCompChoice());
+            } else {
+                alert("Thanks for playing! Refresh page to try again.");
+            }
+        } 
+    } else if (playerChoice === 'Paper') {
+        if (compChoice === 'Rock') {
+            if (confirm(`You won! Opponent picked ${compChoice}. Try again?`) === true) {
+                rps(getPlayerChoice(), getCompChoice());
+            } else {
+                alert("Thanks for playing! Refresh page to try again.");
+            }
+        } else if (compChoice === 'Paper') {
+            if (confirm(`Draw! Opponent picked ${compChoice}. Try again?`) === true) {
+                rps(getPlayerChoice(), getCompChoice());
+            } else {
+                alert("Thanks for playing! Refresh page to try again.");
+            }
+        } else if (compChoice === 'Scissors') {
+            if (confirm(`You lost! Opponent picked ${compChoice}. Try again?`) === true) {
+                rps(getPlayerChoice(), getCompChoice());
+            } else {
+                alert("Thanks for playing! Refresh page to try again.");
+            }
+        }
+    } else if (playerChoice === 'Scissors') {
+        if (compChoice === 'Rock') {
+            if (confirm(`You lost! Opponent picked ${compChoice}. Try again?`) === true) {
+                rps(getPlayerChoice(), getCompChoice());
+            } else {
+                alert("Thanks for playing! Refresh page to try again.");
+            }
+        } else if (compChoice === 'Paper') {
+            if (confirm(`You won! Opponent picked ${compChoice}. Try again?`) === true) {
+                rps(getPlayerChoice(), getCompChoice());
+            } else {
+                alert("Thanks for playing! Refresh page to try again.");
+            } 
+        } else if (compChoice === 'Scissors') {
+            if (confirm(`Draw! Opponent picked ${compChoice}. Try again?`) === true) {
+                rps(getPlayerChoice(), getCompChoice());
+            } else {
+                alert("Thanks for playing! Refresh page to try again.");
+            }
+        }
+    } else {
+        alert(`Error!`);
+    }
+}
+
+rps(getPlayerChoice(), getCompChoice())
