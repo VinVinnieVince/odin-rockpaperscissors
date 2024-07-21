@@ -53,7 +53,7 @@ function getPlayerChoice() {
         return choice;
 }
 
-function getResult(playerChoice, compChoice) {
+function playRound(playerChoice, compChoice) {
     let result, player, comp;
     if (playerChoice === 'Rock'){
         if (compChoice === 'Rock') {
@@ -93,7 +93,7 @@ function bestOf() {
     for (let i = 0; i < games; i++) {
         player = getPlayerChoice();
         computer = getCompChoice();
-        result = getResult(player, computer);
+        result = playRound(player, computer);
 
         if (result === 'Win') {
             playerScore++;
