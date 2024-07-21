@@ -90,6 +90,11 @@ function bestOf() {
         games = Number(prompt("Please enter a number between 1-9!"));
     }
     
+    if (games === 0 || games =='' || games === null) {
+        alert(`Maybe another time! (Refresh to run program again)`);
+        return;
+    }
+
     for (let i = 0; i < games; i++) {
         alert(`Round ${i + 1}`);
 
