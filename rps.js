@@ -1,23 +1,4 @@
-// rps = Rock paper scissors
-
-//*Pseudocode */
-
-// 1. Get CPU choice
-    // 1a. Generate random number:  0, 1, 2
-    // 1b. Convert number to choice (Rock, Paper, Scissors)
-// 2. Get Human choice
-    // 2a. Numbers? vs Choices?
-    // Pros: Numbers are faster ; Cons: May be confusing initially
-    // 2b. Check if choice is valid
-// 3. Generate text: 'Rock... Paper... Scissors!'
-// 4. Show CPU choice
-// 5. If
-    // a. Same choice = Show 'draw!'
-    // b. Inferior choice = Show 'CPU wins!'
-    // c. Superior chocie = Show 'you win!'
-// 6. Store variable for player and CPU scores
-// 7. Increment if either side wins a game
-// 8. Best of 5
+// rps = rock paper scissors
 
 function getCompChoice() {
     
@@ -25,64 +6,75 @@ function getCompChoice() {
     let num = Math.floor(Math.random() * 3);
 
     if (num === 0) {
-        choice = 'Rock';
+        choice = 'rock';
     } else if (num === 1) {
-        choice = 'Paper';
+        choice = 'paper';
     } else {
-        choice = 'Scissors';
+        choice = 'scissors';
     }
     return choice
 }
 
 function getPlayerChoice() {
     
-    let num = Number(prompt("Enter a choice (1 = Rock, 2 = Paper, 3 = Scissors)"));
+    let num = Number(prompt("Enter a choice (1 = rock, 2 = paper, 3 = scissors)"));
     let choice;
     
     while (num != 1 && num != 2 && num != 3) {
-        num = Number(prompt("Please enter a valid number! (1 = Rock, 2 = Paper, 3 = Scissors)"));
+        num = Number(prompt("Please enter a valid number! (1 = rock, 2 = paper, 3 = scissors)"));
     }
 
         if (num === 1) {
-            choice = 'Rock';
+            choice = 'rock';
         } else if (num === 2) {
-            choice = 'Paper';
+            choice = 'paper';
         } else if (num === 3) {
-            choice = 'Scissors';
+            choice = 'scissors';
         }
         return choice;
 }
 
 function playRound(playerChoice, compChoice) {
-    let result, player, comp;
-    if (playerChoice === 'Rock'){
-        if (compChoice === 'Rock') {
+    let result;
+    if (playerChoice === 'rock'){
+        if (compChoice === 'rock') {
             result = 'Draw';
-        } else if (compChoice === 'Paper') {
+        } else if (compChoice === 'paper') {
             result = 'Loss';
-        } else if (compChoice === 'Scissors') {
+        } else if (compChoice === 'scissors') {
             result = 'Win';
         }
-    } else if (playerChoice === 'Paper') {
-        if (compChoice === 'Rock') {
+    } else if (playerChoice === 'paper') {
+        if (compChoice === 'rock') {
             result = 'Win';
-        } else if (compChoice === 'Paper') {
+        } else if (compChoice === 'paper') {
             result = 'Draw';
-        } else if (compChoice === 'Scissors') {
+        } else if (compChoice === 'scissors') {
             result = 'Loss';
         }
-    } else if (playerChoice === 'Scissors') {
-        if (compChoice === 'Rock') {
+    } else if (playerChoice === 'scissors') {
+        if (compChoice === 'rock') {
             result = 'Loss';
-        } else if (compChoice === 'Paper') {
+        } else if (compChoice === 'paper') {
             result = 'Win';
-        } 
+        } else if (compChoice === 'scissors') {
+            result = 'Draw';
+        }
     }   return result;
 }
 
+const allBtn = document.querySelectorAll('button');
+allBtn.forEach( (btn) => {
+    btn.addEventListener('click', () => {
+        let playerInput = btn.className;
+        console.log(playRound(playerInput, getCompChoice()));
+    })
+})
+
+
 function bestOf() {
-    let games = Number(prompt("Lets play Rock Paper Scissors! \nHow many games would you like to play? (1-9)"));
-    let result, player, computer;
+    let games = Number(prompt("Lets play rock paper scissors! \nHow many games would you like to play? (1-9)"));
+    let result;
     let playerScore = 0;
     let computerScore = 0;
 
@@ -98,8 +90,8 @@ function bestOf() {
     for (let i = 0; i < games; i++) {
         alert(`Round ${i + 1}`);
 
-        player = getPlayerChoice();
-        computer = getCompChoice();
+        let player = getPlayerChoice();
+        let computer = getCompChoice();
         result = playRound(player, computer);
 
         if (result === 'Win') {
@@ -122,4 +114,3 @@ function bestOf() {
     }
 }
 
-bestOf();
