@@ -77,13 +77,6 @@ function displayCInput(compInput) {
     actionLog.appendChild(compAction);
 };
 
-function displayEvents(btn) {
-    addtoRound();
-    roundResult(btn);
-    displayPInput();
-    displayCInput();
-};
-
 const allBtn = document.querySelectorAll('button');
 allBtn.forEach( (btn) => {
     btn.addEventListener('click', () => {
