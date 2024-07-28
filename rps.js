@@ -12,27 +12,8 @@ function getCompChoice() {
     } else {
         choice = 'scissors';
     }
-    return choice
-}
-
-function getPlayerChoice() {
-    
-    let num = Number(prompt("Enter a choice (1 = rock, 2 = paper, 3 = scissors)"));
-    let choice;
-    
-    while (num != 1 && num != 2 && num != 3) {
-        num = Number(prompt("Please enter a valid number! (1 = rock, 2 = paper, 3 = scissors)"));
-    }
-
-        if (num === 1) {
-            choice = 'rock';
-        } else if (num === 2) {
-            choice = 'paper';
-        } else if (num === 3) {
-            choice = 'scissors';
-        }
-        return choice;
-}
+    return choice;
+};
 
 function playRound(playerChoice, compChoice) {
     let result;
@@ -61,56 +42,57 @@ function playRound(playerChoice, compChoice) {
             result = 'Draw';
         }
     }   return result;
-}
+};
+
+const actionLog = document.querySelector('.actionLog');
+
+const roundCount = document.createElement('p');
+let roundNo = 0;
+function addtoRound() {
+    roundNo++ ;
+    let roundText = 'Round: ' + String(roundNo);
+    roundCount.textContent = roundText;
+    actionLog.appendChild(roundCount);
+};
+
+const displayResult = document.createElement('p');
+function roundResult(playerInput, compInput) {
+    displayResult.textContent = String(playRound(playerInput, compInput)) + '!';
+    actionLog.appendChild(displayResult);
+};
+
+const playerAction = document.createElement('p');
+// Player input
+function displayPInput(playerInput) {
+    let pInputCap = playerInput.charAt(0).toUpperCase() + playerInput.slice(1);
+    playerAction.textContent = `You picked '${pInputCap}'.`;
+    actionLog.appendChild(playerAction);
+};
+
+const compAction = document.createElement('p');
+// Computer input
+function displayCInput(compInput) {
+    let cInputCap = compInput.charAt(0).toUpperCase() + compInput.slice(1);
+    compAction.textContent = `Computer picked '${cInputCap}'.`;
+    actionLog.appendChild(compAction);
+};
+
+function displayEvents(btn) {
+    addtoRound();
+    roundResult(btn);
+    displayPInput();
+    displayCInput();
+};
 
 const allBtn = document.querySelectorAll('button');
 allBtn.forEach( (btn) => {
     btn.addEventListener('click', () => {
         let playerInput = btn.className;
-        console.log(playRound(playerInput, getCompChoice()));
+        let compInput = getCompChoice();
+
+        addtoRound();
+        roundResult(playerInput, compInput);
+        displayPInput(playerInput);
+        displayCInput(compInput);
     })
-})
-
-
-function bestOf() {
-    let games = Number(prompt("Lets play rock paper scissors! \nHow many games would you like to play? (1-9)"));
-    let result;
-    let playerScore = 0;
-    let computerScore = 0;
-
-    while (games < 0 || games > 9 || (!(Number.isInteger(games)))) {
-        games = Number(prompt("Please enter a number between 1-9!"));
-    }
-    
-    if (games === 0 || games === '' || games === null) {
-        alert(`Maybe another time! (Refresh to run program again)`);
-        return;
-    }
-
-    for (let i = 0; i < games; i++) {
-        alert(`Round ${i + 1}`);
-
-        let player = getPlayerChoice();
-        let computer = getCompChoice();
-        result = playRound(player, computer);
-
-        if (result === 'Win') {
-            playerScore++;
-            alert(`You win! ${player} (You) beats ${computer} (Computer). Current score is \nPlayer:${playerScore}     Computer:${computerScore}`);
-        } else if (result === 'Loss') {
-            computerScore++;
-            alert(`You lost! ${computer} (Computer) beats ${player} (You). Current score is \nPlayer:${playerScore}     Computer:${computerScore}`);
-        } else if (result === 'Draw') {
-            alert(`Draw - no score change! Computer picked ${computer}. Current score is \nPlayer:${playerScore}     Computer:${computerScore}`);
-        }
-    }
-
-    if (playerScore > computerScore) {
-        alert('Congrats! You win!');
-    } else if (playerScore < computerScore) {
-        alert('Better luck next time!');
-    } else if (playerScore === computerScore) {
-        alert('Draw! So close!');
-    }
-}
-
+});
