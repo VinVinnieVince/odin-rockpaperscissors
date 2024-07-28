@@ -44,6 +44,24 @@ function playRound(playerChoice, compChoice) {
     }   return result;
 };
 
+let pScore = 0;
+let cScore = 0;
+
+function addToScore(result) {
+    const computerScore = document.querySelector('.computerScore');
+    const playerScore = document.querySelector('.playerScore');
+
+    if (result === 'Loss') {
+        cScore++ ;
+        computerScore.textContent = cScore ;
+    } else if (result === 'Draw') {
+        return;
+    } else if (result === 'Win') {
+        pScore++ ;
+        playerScore.textContent = pScore ;
+    }
+}
+
 const actionLog = document.querySelector('.actionLog');
 
 const roundCount = document.createElement('p');
@@ -56,8 +74,8 @@ function addtoRound() {
 };
 
 const displayResult = document.createElement('p');
-function roundResult(playerInput, compInput) {
-    displayResult.textContent = String(playRound(playerInput, compInput)) + '!';
+function roundResult(result) {
+    displayResult.textContent = String(result) + '!';
     actionLog.appendChild(displayResult);
 };
 
@@ -82,9 +100,11 @@ allBtn.forEach( (btn) => {
     btn.addEventListener('click', () => {
         let playerInput = btn.className;
         let compInput = getCompChoice();
+        let result = playRound(playerInput, compInput);
 
         addtoRound();
-        roundResult(playerInput, compInput);
+        roundResult(result);
+        addToScore(result);
         displayPInput(playerInput);
         displayCInput(compInput);
     })
