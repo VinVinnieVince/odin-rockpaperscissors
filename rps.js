@@ -47,10 +47,11 @@ function playRound(playerChoice, compChoice) {
 let pScore = 0;
 let cScore = 0;
 
-function addToScore(result) {
-    const computerScore = document.querySelector('.computerScore');
-    const playerScore = document.querySelector('.playerScore');
+const computerScore = document.querySelector('.computerScore');
+const playerScore = document.querySelector('.playerScore');
 
+// Result obtained from playRound(), called at event listener
+function addToScore(result) {
     if (result === 'Loss') {
         cScore++ ;
         computerScore.textContent = cScore ;
@@ -96,6 +97,44 @@ function displayCInput(compInput) {
 };
 
 const allBtn = document.querySelectorAll('button');
+const resetBtn = document.createElement('button')
+
+function clearLog() {
+    pScore = 0;
+    cScore = 0;
+    roundNo = 0;
+    
+    playerScore.textContent = '0';
+    computerScore.textContent = '0';
+
+    // Clears all .actionLog child elements
+    actionLog.textContent = '';
+
+    allBtn.forEach((btn) => {
+        btn.disabled = false;
+    });
+};
+
+function endGame() {
+    allBtn.forEach( (btn) => {
+        btn.disabled = true;
+    })
+    
+    const msg = document.createElement('p')
+
+    if (pScore > cScore) {
+        msg.textContent = 'You win! Play again?';
+    } else {
+        msg.textContent = `You'll get them next time! Play again?`;
+    };
+
+    resetBtn.textContent = 'Reset';
+    resetBtn.addEventListener ('click', clearLog);
+
+    actionLog.appendChild(msg);
+    actionLog.appendChild(resetBtn);
+};
+
 allBtn.forEach( (btn) => {
     btn.addEventListener('click', () => {
         let playerInput = btn.className;
@@ -107,5 +146,10 @@ allBtn.forEach( (btn) => {
         addToScore(result);
         displayPInput(playerInput);
         displayCInput(compInput);
-    })
+
+        if (pScore + cScore === 5) {
+            endGame();
+        };
+    });
 });
+
