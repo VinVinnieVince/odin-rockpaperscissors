@@ -123,5 +123,3 @@ function bestOf() {
 }
 
 bestOf();
-
-console.log('Hello World!')
