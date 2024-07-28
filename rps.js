@@ -75,7 +75,7 @@ function addtoRound() {
 };
 
 const displayResult = document.createElement('p');
-function roundResult(result) {
+function displayResult(result) {
     displayResult.textContent = String(result) + '!';
     actionLog.appendChild(displayResult);
 };
@@ -142,7 +142,7 @@ allBtn.forEach( (btn) => {
         let result = playRound(playerInput, compInput);
 
         addtoRound();
-        roundResult(result);
+        displayResult(result);
         addToScore(result);
         displayPInput(playerInput);
         displayCInput(compInput);
